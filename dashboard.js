@@ -15,6 +15,16 @@ $(function(){
         }
     });
 
+	function titleCase(str) {
+	  var newstr = str.split(" ");
+	  for(i=0;i<newstr.length;i++){
+	    var copy = newstr[i].substring(1).toLowerCase();
+	    newstr[i] = newstr[i][0].toUpperCase() + copy;
+	  }
+	   newstr = newstr.join(" ");
+	   return newstr;
+	}  
+
     function addMapLayer(layer) {
 		var newLayer = L.esri.featureLayer({
 			url: layer.url,
@@ -25,22 +35,21 @@ $(function(){
 			}
 		})
 		newLayer.on('mouseout', function(e){
-		    document.getElementById('filters').innerHTML = 'Click to Filter';
-		    // newLayer.resetFeatureStyle(oldId);
+		    document.getElementById('info').innerHTML = 'Click to Filter';
 		    newLayer.setFeatureStyle(e.layer.feature.id, {
 		      color: '#888',
 		      weight: 1
 		    });
 		  });
 
-		  newLayer.on('mouseover', function(e){
-		    document.getElementById('filters').innerHTML = e.layer.feature.properties.NAME;
-	        e.layer.bringToFront();
-		    newLayer.setFeatureStyle(e.layer.feature.id, {
-		      color: '#9D78D2',
-		      weight: 3
-		    });
-		  });		
+		newLayer.on('mouseover', function(e){
+			document.getElementById('info').innerHTML = titleCase(e.layer.feature.properties.NAME);
+			e.layer.bringToFront();
+			newLayer.setFeatureStyle(e.layer.feature.id, {
+			  color: '#9D78D2',
+			  weight: 3
+			});
+		});		
 		newLayer.setStyle(function(feature){
 			var color = "#BBB";
 			switch( feature.properties.STATUS_2) {
@@ -70,7 +79,7 @@ $(function(){
     }
     function filterCharts(feature) {
     	var queryGeometry = {rings: feature.geometry.coordinates};
-    	document.getElementById("filters").innerHTML = "Filtered by " + feature.properties["NAME"];
+    	document.getElementById("filters").innerHTML = titleCase(feature.properties["NAME"]);
     	charts.forEach(function(chart) {
     		// chart.dataset.query.where = ""
 			chart.dataset.query.geometry = queryGeometry
@@ -139,11 +148,13 @@ $(function(){
     function addMap(card, index) {
 		var map = L.map("chart" + index, {scrollWheelZoom: false}).setView([45.528, -122.680], 13);
 		maps.push(map);
+		
 		L.esri.basemapLayer("DarkGray").addTo(map);
 		getItem(card.style.item, function(err,data) { 
 			zoomMap(map, data.extent)
 			getWebmap( card.style.item, buildMap )
 		})
+
     }	
     function buildFunction(cardType) {
     	switch(cardType) {
