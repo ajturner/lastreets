@@ -1,0 +1,72 @@
+{
+	"cards":[
+		{
+			"x": 1,
+			"y": 1,
+			"width": 4,
+			"height": 4,
+			"type": "map",
+			"title": "Lane Meters Paved",
+			"style": {
+				"item": "ad148bd0d1b947e789b988e4bd2ed802"
+			}
+		},
+		{
+			"x": 5,
+			"y": 1,
+			"width": 3,
+			"height": 1,
+			"type": "metric",
+			"title": "Lane Meters Paved",
+			"style": {
+				"type": "metric",
+				"dataset": {
+					"mappings": {},
+				    "url":"https://services1.arcgis.com/PTh9WC0Sf2WS7AAq/ArcGIS/rest/services/Assessment/FeatureServer/0",
+				    "query": {
+				      "outStatistics": [{
+				        "statisticType": "sum", 
+				        "onStatisticField": "ZLENGTH", 
+				        "outStatisticFieldName": "ZLENGTH_SUM"
+				      }]
+				    }
+			    },
+			    "tooltip": {
+				    "title": "Streets Built",
+				    "content": "{ZLENGTH_SUM} meters of 3,600"
+				}
+			}
+		},
+		{
+			"x": 5,
+			"y": 2,
+			"width": 3,
+			"height": 3,
+			"type": "chart",
+			"title": "Pavement Conditions <br/><span id='filters'></span>",
+			"style": {
+				"type": "bar",
+				"dataset": {
+				    "url":"https://services1.arcgis.com/PTh9WC0Sf2WS7AAq/ArcGIS/rest/services/Assessment/FeatureServer/0",
+				    "query": {
+			      		"groupByFieldsForStatistics": "STATUS_2",
+					    "outStatistics": [{
+					        "statisticType": "sum", 
+					        "onStatisticField": "ZLENGTH", 
+					        "outStatisticFieldName": "ZLENGTH_SUM"
+					    }]
+				    },
+				    "mappings":{
+				      "sort": "Number_of_SUM DESC",
+				      "x": {"field":"STATUS_2","label":"Street Status"},
+				      "y": {"field":"ZLENGTH_SUM","label":"Road Length"}
+				    }
+			    },
+			    "tooltip": {
+				    "title": "{STATUS_2}",
+				    "content": "{ZLENGTH_SUM} meters in {STATUS_2}"
+				  }
+				}
+			}
+	]
+}

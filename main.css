@@ -1,0 +1,38 @@
+.gridster { width: 100%;}
+.widget {
+	padding: 5px;
+}
+.chart {
+	height: 85%;
+	width: 90%;
+}
+.cedar-metric {
+	/*padding: 20px;*/
+}
+.cedar-metric .cedar-value {
+	font-size: 60px;
+}
+.cedar-metric h3 {
+	font-size2: 15px;
+	color: #888;
+}
+#map, #chart1 {
+	height: 500px;
+	width: 100%;
+}
+
+h3 {
+	margin-bottom: 16px;
+}
+
+#filters {
+	font-size: 24px;
+}
+#footer{
+    height: 60px;
+    margin:0!important;
+    padding:0!important;
+    text-align:center;
+    background:#023660;
+    color:white;
+}

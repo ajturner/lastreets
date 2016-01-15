@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="not-ie"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  
+    <title>Dashboard | Esri Cedar</title>
+  
+
+  
+
+  <meta name="description" content="Esri Cedar">
+  <meta name="viewport" content="width=device-width">
+
+  <!--[if lt IE 9]>
+    <script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv-printshiv.js"></script>
+  <![endif]-->
+
+  <!-- stylesheet -->
+  <!-- <link rel="stylesheet" href="../css/style.css"> -->
+  <link rel="stylesheet" href="http://esri.github.io/cedar/css/calcite-bootstrap.css">
+
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+  <!-- Cedar and dependencies (d3, vega) -->
+  <!-- NOTE: the pie chart examle does not work w/ latest vega (v1.5+), so here we are pulling in an oldder version (v1.4.3) -->
+  
+    <script type="text/javascript" src="http://esri.github.io/cedar/js/d3.min.js"></script>
+    <script type="text/javascript" src="http://esri.github.io/cedar/js/vega.min.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/Esri/cedar/develop/src/cedar.js"></script>
+  
+  <!-- NOTE: underscore is used by a few examples, but is not needed by Cedar -->
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+
+<link rel="stylesheet" href="http://gridster.net/dist/jquery.gridster.min.css"></link>
+<link rel="stylesheet" href="http://gridster.net/assets/css/style.css"></link>
+
+<script type="text/javascript" src="http://gridster.net/assets/js/libs/jquery-1.7.2.min.js"></script>
+<script src="http://gridster.net/dist/jquery.gridster.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-1.0.0-b1/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-1.0.0-b1/leaflet.js"></script>
+<script src="http://cdn.jsdelivr.net/leaflet.esri/2.0.0-beta.5/esri-leaflet.js"></script>
+
+<link rel="stylesheet" href="main.css"></link>
+</head>
+<body>
+<script src="http://globalnav.lacity.org/global_nav_2.0.js"></script> 
+
+<!--   <nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../">cedar.js</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div>
+  </div>
+</nav> -->
+  
+
+<div class="container">
+<div class="row">
+  <div class="col-lg-12">
+    <div class="gridster">
+        <ul id="dashboard"></ul>
+        <div id="filters2"></div>
+    </div> 
+  </div>
+</div>
+</div>
+</div>
+ <footer id="footer" class="footer" role="footer">
+    <div class="container">
+      <div class="row">        
+        <div class="row">
+            <div class="col-md-12 last" style="margin-top: 17px;">
+              <p>© Copyright 2015 City of Los Angeles. All Rights Reserved</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- <script src="../js/script.js"></script>-->
+    <script type="text/javascript" src="dashboard.js"></script>
+  </body>
+</html>
